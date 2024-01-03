@@ -8,5 +8,34 @@ steps:
       - '-t'
       - northamerica-northeast1-docker.pkg.dev/vksuy-dav-svc-prj-7b5e/vks-docker-repo-front/auto_srt_front:${_DOCKER_TAG}
       - .
+  - id: "Deploy to Cloud Run"
+    name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    entrypoint: gcloud
+    args:
+      - "beta"
+      - "run"
+      - "deploy"
+      - "auto-srt-front-nane1"
+      - "--image"
+      - "${_REGION}-docker.pkg.dev/vksuy-dav-svc-prj-7b5e/vks-docker-repo-front/auto_srt_front:${_DOCKER_TAG}"
+      - "--region"
+      - "${_REGION}"
+      - "--ingress"
+      - "all"
+      - "--port"
+      - "80"
+      - "--service-account"
+      - "project-service-account@vksuy-dav-svc-prj-7b5e.iam.gserviceaccount.com"
+      - "--allow-unauthenticated"
+      - "--min-instances"
+      - "0"
+      - "--max-instances"
+      - "1"
+      - "--cpu"
+      - "1"
+      - "--memory"
+      - "256Mi"
+
 substitutions:
     _DOCKER_TAG: v1.0.0
+    _REGION: northamerica-northeast1

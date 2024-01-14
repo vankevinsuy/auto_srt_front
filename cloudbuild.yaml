@@ -6,7 +6,7 @@ steps:
       - build
       - --push
       - '-t'
-      - ${_REGION}-docker.pkg.dev/vksuy-dav-svc-prj-7b5e/vks-docker-repo-front/auto_srt_front:${_DOCKER_TAG}
+      - ${_REGION}-docker.pkg.dev/exploration-gcp-1/frontend/auto_srt_front:${_DOCKER_TAG}
       - .
   - id: "Deploy to Cloud Run"
     name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
@@ -17,7 +17,7 @@ steps:
       - "deploy"
       - "auto-srt-front-nane1"
       - "--image"
-      - "${_REGION}-docker.pkg.dev/vksuy-dav-svc-prj-7b5e/vks-docker-repo-front/auto_srt_front:${_DOCKER_TAG}"
+      - "${_REGION}-docker.pkg.dev/exploration-gcp-1/frontend/auto_srt_front:${_DOCKER_TAG}"
       - "--region"
       - "${_REGION}"
       - "--ingress"
@@ -25,7 +25,7 @@ steps:
       - "--port"
       - "80"
       - "--service-account"
-      - "project-service-account@vksuy-dav-svc-prj-7b5e.iam.gserviceaccount.com"
+      - "fontend-run@exploration-gcp-1.iam.gserviceaccount.com"
       - "--allow-unauthenticated"
       - "--min-instances"
       - "0"

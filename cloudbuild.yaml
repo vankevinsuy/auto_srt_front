@@ -23,7 +23,7 @@ steps:
       - "--ingress"
       - "all"
       - "--port"
-      - "80"
+      - "5000"
       - "--service-account"
       - "fontend-run@exploration-gcp-1.iam.gserviceaccount.com"
       - "--allow-unauthenticated"

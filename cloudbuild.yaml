@@ -1,12 +1,12 @@
 steps:
-  - id: build image
-    name: gcr.io/cloud-builders/docker
+  - id: "build image"
+    name: "gcr.io/cloud-builders/docker"
     args:
       - buildx
       - build
       - --push
       - '-t'
-      - northamerica-northeast1-docker.pkg.dev/vksuy-dav-svc-prj-7b5e/vks-docker-repo-front/auto_srt_front:${_DOCKER_TAG}
+      - ${_REGION}-docker.pkg.dev/vksuy-dav-svc-prj-7b5e/vks-docker-repo-front/auto_srt_front:${_DOCKER_TAG}
       - .
   - id: "Deploy to Cloud Run"
     name: "gcr.io/google.com/cloudsdktool/cloud-sdk"

@@ -4,7 +4,7 @@ from google.cloud import storage
 
 
 app = FastAPI()
-BUCKET_NAME = 'auto-srt-new-file'
+BUCKET_NAME = 'auto-srt-new-file-received'
 
 
 @app.get("/")
